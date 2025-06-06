@@ -127,4 +127,4 @@ directories {
 
 ## Examples
 
-Check the `test` directory in the repository for more examples.
+Check the `copytool/src/main/java/com/alexius/copytool/testing` directory in the repository for more examples.
