@@ -41,19 +41,17 @@ object RegexTemplates {
             return this
         }
 
-        // Add component name conversions (PascalCase)
+        // (PascalCase)
         fun addComponentConversion(fromPrefix: String, toPrefix: String): RegexBuilder {
             substitutions[Regex("${fromPrefix}([A-Z][a-zA-Z0-9]*)")] = "$toPrefix$1"
             return this
         }
 
-        // Add file name conversion
         fun addFileNameConversion(fromPattern: String, toPattern: String): RegexBuilder {
             fileNameSubstitutions[Regex(fromPattern)] = toPattern
             return this
         }
 
-        // Add resource ID conversions
         fun addResourceConversion(fromPrefix: String, toPrefix: String): RegexBuilder {
             substitutions[Regex("R\\.layout\\.${fromPrefix.lowercase()}_[a-z0-9_]+")] =
                 "R.layout.${toPrefix.lowercase()}_$1"
@@ -62,16 +60,15 @@ object RegexTemplates {
             return this
         }
 
-        // Add variable name conversions (camelCase)
+        // (camelCase)
         fun addVariableConversion(fromPrefix: String, toPrefix: String): RegexBuilder {
             substitutions[Regex("(?<=\\s|^)${fromPrefix.lowercase()}([A-Z][a-zA-Z0-9]*)")] =
                 "${toPrefix.lowercase()}$1"
             return this
         }
 
-        // Add package name conversions
-        fun addPackageConversion(fromPackage: String, toPackage: String): RegexBuilder {
-            substitutions[Regex(fromPackage.replace(".", "\\."))] = toPackage
+        fun addPackageAndImportsConversion(fromPackage: String, toPackage: String): RegexBuilder {
+            substitutions[Regex("(?<=^package |^import )${fromPackage.replace(".", "\\.")}")] = toPackage
             return this
         }
 
@@ -115,7 +112,6 @@ object RegexTemplates {
             return this
         }
 
-        // Build the final CopyConfig
         fun build(
             sourceFolder: String,
             tempFolder: String,

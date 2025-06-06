@@ -1,0 +1,3 @@
+package com.alexius.copytool.testing.long_directory_name.src.ms_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+class MsTest {}

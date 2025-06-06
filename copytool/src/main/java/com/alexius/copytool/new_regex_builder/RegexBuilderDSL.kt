@@ -55,8 +55,8 @@ class RegexBuilder {
             builder.fileNameSubstitutions[Regex(fromPattern)] = toPattern
         }
 
-        fun packages(fromPackage: String, toPackage: String) {
-            builder.substitutions[Regex(fromPackage.replace(".", "\\."))] = toPackage
+        fun packagesAndImports(fromPackage: String, toPackage: String) {
+            builder.substitutions[Regex("(?<=^package |^import )${fromPackage.replace(".", "\\.")}")] = toPackage
         }
 
         fun resource(fromPrefix: String, toPrefix: String) {
