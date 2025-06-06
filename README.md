@@ -32,8 +32,6 @@ dependencies {
 }
 ```
 
-Replace `Tag` with the latest version or commit hash.
-
 ## Usage
 
 Kopy Tool provides two approaches for configuration:
