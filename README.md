@@ -16,10 +16,11 @@ Kopy Tool helps Android developers to easily copy and transform project files, a
 Add JitPack repository to your build file:
 
 ```gradle
-allprojects {
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        ...
-        maven { url 'https://jitpack.io' }
+        ....
+        maven("https://jitpack.io")
     }
 }
 ```
@@ -28,7 +29,7 @@ Add the dependency:
 
 ```gradle
 dependencies {
-    implementation 'com.github.alexiyous:kopy-tool:v1.0.2'
+    implementation ("com.github.alexiyous:kopy-tool:v1.0.2")
 }
 ```
 
