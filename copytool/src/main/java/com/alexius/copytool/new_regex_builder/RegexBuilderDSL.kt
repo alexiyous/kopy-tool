@@ -56,7 +56,8 @@ class RegexBuilder {
         }
 
         fun packagesAndImports(fromPackage: String, toPackage: String) {
-            builder.substitutions[Regex("(?<=^package |^import )${fromPackage.replace(".", "\\.")}")] = toPackage
+            val escapedPackage = fromPackage.replace(".", "\\.")
+            builder.substitutions[Regex("^(\\s*(?:package|import)\\s+)$escapedPackage(\\.[\\w.]*)?", RegexOption.MULTILINE)] = "$1$toPackage$2"
         }
 
         fun resource(fromPrefix: String, toPrefix: String) {
