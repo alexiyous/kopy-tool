@@ -68,7 +68,8 @@ object RegexTemplates {
         }
 
         fun addPackageAndImportsConversion(fromPackage: String, toPackage: String): RegexBuilder {
-            substitutions[Regex("(?<=^package |^import )${fromPackage.replace(".", "\\.")}")] = toPackage
+            val escaped = fromPackage.replace(".", "\\.")
+            substitutions[Regex("^(\\s*(?:package|import)\\s+)$escaped(\\.[\\w.]+)?", RegexOption.MULTILINE)] = "$1$toPackage$2"
             return this
         }
 
